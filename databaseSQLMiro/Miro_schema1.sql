@@ -1,0 +1,1 @@
+SELECT * FROM miro_schema_actually_database.Table_with_Food;

@@ -22,6 +22,18 @@
         <thymeleaf-layout-dialect.version>2.2.2</thymeleaf-layout-dialect.version>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jdbi</groupId>
+                <artifactId>jdbi3-bom</artifactId>
+                <type>pom</type>
+                <version>3.14.4</version>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <!-- Dependencies -->
     <dependencies>
         <!-- Spring Boot Web - provides basic web framework -->
@@ -39,8 +51,8 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.45</version>
-            <!--<version>8.0.12</version>-->
+<!--            <version>5.1.45</version>-->
+            <version>8.0.12</version>
         </dependency>
 
         <!-- JDBI -->
@@ -49,6 +61,15 @@
             <artifactId>jdbi3-core</artifactId>
             <version>3.4.0</version>
         </dependency>
+
+        <!--access .env file-->
+        <dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>java-dotenv</artifactId>
+            <version>5.2.2</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>
