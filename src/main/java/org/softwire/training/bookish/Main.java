@@ -3,30 +3,27 @@ package org.softwire.training.bookish;
 import org.jdbi.v3.core.Jdbi;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import org.jdbi.v3.core.mapper.reflect.ConstructorMapper;
+import org.softwire.training.bookish.models.database.Book;
 
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-        Dotenv dotenv = Dotenv.load();
-        String SQL_MIRO_PASSWORD = dotenv.get("SQL_MIRO_PASSWORD");
-
         String hostname = "localhost";
         String database = "library";
         String user = "root";
-        String password = SQL_MIRO_PASSWORD;
+//        String password = System.getenv("DB_PASS");
+        String password = Dotenv.load().get("DB_PASS");
         String connectionString = "jdbc:mysql://" + hostname + "/" + database + "?user=" + user + "&password=" + password + "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT&useSSL=false";
         connectionString += "&allowPublicKeyRetrieval=true";
 
 
-//        jdbcMethod(connectionString);
-        jdbiMethod(connectionString);
+        jdbcMethod(connectionString);
+//        jdbiMethod(connectionString);
     }
 
     private static void jdbcMethod(String connectionString) throws SQLException {

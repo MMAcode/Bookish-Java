@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <!--@thymesVar id="model" type="org.softwire.training.bookish.models.page.AboutPageModel"-->
+
+    <head>
+        <title>Bookish - books</title>
+
+        <link rel="stylesheet" href="/styles/general.css"/>
+        <link rel="stylesheet" href="/styles/navbar.css"/>
+        <link rel="stylesheet" href="/styles/about.css"/>
+    </head>
+
+    <body>
+
+        <div th:replace="fragments/navbar :: navbar">
+            <!-- This element is replaced by the HTML in fragments/navbar.html -->
+        </div>
+
+        <div class="container">
+            <h2>Books</h2>
+            <h3>Let me show you all the boooooooks we have:</h3>
+            <div class="technology-list">
+                <div th:each="book : ${allBooks}">
+                    <p th:text="${book.toString()}"></p>
+                    <a th:href="${'/books/delete-book?bookId=' + book.getId()}" class="delete-button">delete</a>
+                    <a th:href="${'/books/edit-book?bookId=' + book.getId()}" class="delete-button">edit</a>
+                </div>
+            </div>
+
+
+
+            <h2>Add a Book:</h2>
+            <form th:action="@{/books/add-book}" method="post">
+                <div class="add-tech-row">
+                    <label>
+                        <span>title: </span>
+                        <input type="text" name="title" value="Superman">
+                    </label>
+                </div>
+                <div class="add-tech-row">
+                    <label>
+                        <span>isbn: </span>
+                        <input type="text" name="isbn" value="1234567890120">
+                    </label>
+                </div>
+                <div class="add-tech-row">
+                    <label>
+                        <span>copies_total: </span>
+                        <input type="text" value="24" name="copies_total">
+                    </label>
+                </div>
+                <div class="add-tech-row">
+                    <span><!-- spacer --></span>
+                    <input type="submit" value="Add technology" />
+                </div>
+            </form>
+
+        </div>
+
+    </body>
+
+
+</html>
