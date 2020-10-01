@@ -18,8 +18,9 @@
         </div>
 
         <div class="container">
+            <div class="successAlert" role="alert" th:text="${successXY}" th:if="${successXY}"></div>
             <h2>Books</h2>
-            <h3>Let me show you all the boooooooks we have:</h3>
+            <h3>Currently we have <span th:text="${allBooks.size()}"></span> books in our library.</h3>
             <div class="technology-list">
                 <div th:each="book : ${allBooks}">
                     <p th:text="${book.toString()}"></p>
@@ -35,24 +36,24 @@
                 <div class="add-tech-row">
                     <label>
                         <span>title: </span>
-                        <input type="text" name="title" value="Superman">
+                        <input type="text" name="title" value="">
                     </label>
                 </div>
                 <div class="add-tech-row">
                     <label>
                         <span>isbn: </span>
-                        <input type="text" name="isbn" value="1234567890120">
+                        <input type="text" name="isbn" value="">
                     </label>
                 </div>
                 <div class="add-tech-row">
                     <label>
                         <span>copies_total: </span>
-                        <input type="text" value="24" name="copies_total">
+                        <input type="text" name="copies_total"  value="">
                     </label>
                 </div>
                 <div class="add-tech-row">
                     <span><!-- spacer --></span>
-                    <input type="submit" value="Add technology" />
+                    <input type="submit" value="Add a book" />
                 </div>
             </form>
 
